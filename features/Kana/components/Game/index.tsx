@@ -2,6 +2,7 @@
 import clsx from 'clsx';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Return from '@/shared/ui-composite/Game/ReturnFromGame';
+import GameProgressIndicator from '@/shared/ui-composite/Game/GameProgressIndicator';
 import MCQ from './MCQ';
 import Input from './Input';
 import TilesMode from './TilesMode';
@@ -194,6 +195,11 @@ const Game = () => {
           gameMode={gameMode}
           onQuit={handleQuit}
         />
+        {!showStats && view === 'playing' && (
+          <GameProgressIndicator
+            currentQuestion={numCorrectAnswers + numWrongAnswers + 1}
+          />
+        )}
         {gameMode.toLowerCase() === 'pick' ? (
           <TilesMode isHidden={showStats || view !== 'playing'} />
         ) : gameMode.toLowerCase() === 'mcq' ? (

@@ -1,6 +1,7 @@
 'use client';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Return from '@/shared/ui-composite/Game/ReturnFromGame';
+import GameProgressIndicator from '@/shared/ui-composite/Game/GameProgressIndicator';
 import Input from './Input';
 import MCQ from './MCQ';
 import TilesMode from './TilesMode';
@@ -261,6 +262,11 @@ const Game = () => {
           gameMode={gameMode}
           onQuit={handleQuit}
         />
+        {!showStats && view === 'playing' && (
+          <GameProgressIndicator
+            currentQuestion={numCorrectAnswers + numWrongAnswers + 1}
+          />
+        )}
         {gameMode.toLowerCase() === 'pick' ? (
           <TilesMode
             key={`vocab-tiles-${sessionNonce}`}
