@@ -853,7 +853,7 @@ export default function Gauntlet<T>({ config, onCancel }: GauntletProps<T>) {
     <ActiveGame
       dojoType={dojoType}
       gameMode={gameMode}
-      currentIndex={correctAnswers}
+      currentIndex={currentIndex}
       totalQuestions={totalQuestions}
       lives={lives}
       maxLives={maxLives}
@@ -874,4 +874,3 @@ export default function Gauntlet<T>({ config, onCancel }: GauntletProps<T>) {
     />
   );
 }
-

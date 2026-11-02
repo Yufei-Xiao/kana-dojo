@@ -20,6 +20,7 @@ import {
   GameBottomBar,
   type BottomBarState,
 } from '@/shared/ui-composite/Game/GameBottomBar';
+import GameProgressIndicator from '@/shared/ui-composite/Game/GameProgressIndicator';
 import Stars from '@/shared/ui-composite/Game/Stars';
 import GameScoreBar from '@/shared/ui-composite/Game/GameScoreBar';
 import { useClick } from '@/shared/hooks/generic/useAudio';
@@ -494,11 +495,10 @@ export default function ActiveGame<T>({
         </button>
 
         {/* Progress Display */}
-        <div className='flex items-center gap-2 text-sm text-(--muted-color)'>
-          <span>
-            {currentIndex} / {totalQuestions}
-          </span>
-        </div>
+        <GameProgressIndicator
+          currentQuestion={currentIndex + 1}
+          totalQuestions={totalQuestions}
+        />
 
         {/* Lives Display */}
         <div className='flex items-center gap-1'>
@@ -719,4 +719,3 @@ export default function ActiveGame<T>({
     </div>
   );
 }
-
